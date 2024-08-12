@@ -1,0 +1,38 @@
+{% import "flowbite_jinja_htmx/icons/stack.jinja" as StackIcon %}
+{% import "flowbite_jinja_htmx/icons/network_graph.jinja" as NetworkGraphIcon %}
+{% import "flowbite_jinja_htmx/icons/wand_magic_solid.jinja" as WandMagicSolidIcon %}
+{% import "flowbite_jinja_htmx/icons/clipboard.jinja" as ClipboardIcon %}
+
+<ul class="space-y-2">
+      
+    {% set inactive_nav_item_classes = "flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group" %}
+    {% set active_nav_item_classes = "flex items-center p-2 text-base font-medium w-full whitespace-nowrap text-gray-900 dark:text-white rounded transition duration-75 group bg-primary-300 dark:bg-primary-600" %}
+
+    {% set inactive_nav_item_icon_classes = "text-gray-500 dark:text-gray-400" %}
+    {% set active_nav_item_icon_classes = "" %}
+
+    <!-- Demo Page NavItem -->
+    <li>
+      <a href="/home" class="{{ active_nav_item_classes if 'home' in request.endpoint else inactive_nav_item_classes }}">
+        {{ ClipboardIcon.render(class=active_nav_item_icon_classes if 'home' in request.endpoint else inactive_nav_item_icon_classes) }}
+        <span class="ml-3">Home</span>
+      </a>
+    </li>
+
+    <!-- counter NavItem -->
+    <li>
+      <a href="/counter" class="{{ active_nav_item_classes if 'counter' in request.endpoint else inactive_nav_item_classes }}">
+        {{ NetworkGraphIcon.render(class=active_nav_item_icon_classes if 'counter' in request.endpoint else inactive_nav_item_icon_classes) }}
+        <span class="ml-3">Counter</span>
+      </a>
+    </li>
+
+    <!-- Fetch NavItem -->
+    <li>
+      <a href="/fetch" class="{{ active_nav_item_classes if 'fetch' in request.endpoint else inactive_nav_item_classes }}">
+        {{ StackIcon.render(class=active_nav_item_icon_classes if 'fetch' in request.endpoint else inactive_nav_item_icon_classes) }}
+        <span class="ml-3">Fetch</span>
+      </a>
+    </li>
+
+  </ul>

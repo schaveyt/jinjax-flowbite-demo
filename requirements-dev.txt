@@ -1,0 +1,8 @@
+--extra-index-url https://artifactory.int.***.com/artifactory/api/pypi/pypi/simple
+
+Flask==3.0.3
+pywebview==4.3.3
+pyinstaller==6.0.0
+GitPython==3.1.43
+py_flowbite_jinja_htmx==1.0.dev10
+-e ../jinjax-flowbite = jinjax-flowbite
