@@ -17,6 +17,24 @@
             ],
             "jinja": true,
             "justMyCode": false
+        },
+        {
+            "name": "Python: JinjaX Flowbite Dev",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "demo_app",
+                "FLASK_DEBUG": "1",
+                "JINJAX_FLOWBITE_DEV": "1"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "justMyCode": false
         }
     ]
 }
