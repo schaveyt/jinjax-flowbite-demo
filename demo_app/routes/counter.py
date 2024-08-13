@@ -1,8 +1,6 @@
-import os
-from flask import Response, flash, redirect, request, render_template
-from demo_app.webapp import APP_VERSION, app_services, app
-from demo_app.templates.htmx_utils import htmx_redirect
-import time
+from flask import Response, request
+from demo_app.webapp import app_services, app, jinjax_catalog
+from demo_app.routes.htmx_utils import htmx_redirect
 
 @app.route("/counter")
 def counter_page() -> Response | str:
@@ -15,8 +13,7 @@ def counter_page() -> Response | str:
     if scc_fetch:
         app_services.scc_service.fetch()
         return htmx_redirect(request, "/counter")
+
     
-    page_title = "Counter"
-    
-    return render_template("pages/counter/page.html", app_services=app_services, page_title=page_title)
+    return jinjax_catalog.render("Pages.CounterPage", app_services=app_services)
 

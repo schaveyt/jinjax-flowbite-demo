@@ -5,9 +5,8 @@ module.exports = {
     "./demo_app/**/*.{html,jinja}",
     "./demo_app/static/js/**/*.js",
     "./node_modules/flowbite/**/*.js",
-    "./venv/Lib/site-packages/py_flowbite_jinja_htmx/**/*.{html,jinja}",
-    "./venv/Lib/site-packages/jinjax_flowbite/**/*.{html,jinja}",
-    "../jinjax_flowbite/src/jinjax_flowbite/**/*.{html,jinja}",
+    "./venv/Lib/site-packages/jinjax-flowbite/**/*.jinja",
+    "../jinjax_flowbite/src/jinjax_flowbite/**/*.jinja",
   ],
   darkMode: 'class',
   theme: {

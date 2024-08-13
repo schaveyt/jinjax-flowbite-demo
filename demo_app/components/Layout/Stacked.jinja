@@ -1,62 +1,61 @@
-{% extends "layouts/app.html" %}
-{% import "flowbite_jinja_htmx/controls/alert.jinja" as Alert %}
+{#def app_services #}
 
+<div class="antialiased bg-gray-50 dark:bg-gray-900 h-screen flex flex-col ">
 
-{% block layout_content %}
+    <Common.Header include_responsive_drawer=False app_services={{app_services}} />
 
-  <div class="antialiased bg-gray-50 dark:bg-gray-900 h-screen flex flex-col ">
-
-    {{ catalog.irender("Header", include_responsive_drawer=False, app_services=app_services) }}
-  
     <div class="h-screen flex flex-col justify-between flex-auto overflow-y-auto">
-  
+
         <section class="flex-auto flex overflow-y-auto">
-  
+
             <main class="p-4 bg-gray-50 dark:bg-gray-900 overflow-auto w-full">
 
                 {% if app_services.app_state.app_error %}
                     <div id="app-error-msg" class="relative z-10 flex w-full justify-center">
                         <div class="absolute top-0">
-                            {{ Alert.render(id=flash_msg_id, text=app_services.app_state.app_error, type="danger") }}        
+                            <Flowbite.Alert text="{{app_services.app_state.app_error}}" type="danger" />
                         </div>
                     </div>
-                {% endif %} 
-                
+                {% endif %}    
+
                 {% with flash_msgs = get_flashed_messages(with_categories=true) %}
                     {% if flash_msgs %}
                         <div id="flash-msgs" class="relative z-10 flex w-full justify-center">
                             <div class="absolute top-0">
+                                {% if app_services.app_state.app_error %}
+                                    <Flowbite.Alert text="{{ app_services.app_state.app_error }}" type="danger" />
+                                {% endif %}    
                                 {% for category, message in flash_msgs %}
 
                                     {% set flash_msg_id = "flash-msg-{}".format(loop.index) %}
 
                                     {% if category == "error" %}
-                                        {{ Alert.render(id=flash_msg_id, text=message, type="danger") }}
+                                        <Flowbite.Alert id="{{ flash_msg_id}}" text="{{ message}}" type="danger" />
                                     {% elif category == "warning" %}
-                                        {{ Alert.render(id=flash_msg_id, text=message, type="warning") }}
+                                        <Flowbite.Alert id="{{ flash_msg_id}}" text="{{ message}}" type="warning" />
                                     {% else %}
-                                        {{ Alert.render(id=flash_msg_id, text=message, type="success") }}
+                                        <Flowbite.Alert id="{{ flash_msg_id}}" text="{{ message}}" type="success" />
                                     {% endif %}
-                                    
+
                                 {% endfor %}
                             </div>
                         </div>
                     {% endif %}
                 {% endwith %}
                 
-                {% block page_body %}{% endblock %}
+                {{ content }}
             
             </main>
-  
+
         </section>
-  
-        {{ catalog.irender("Footer", app_services=app_services) }}
-  
+
+        <Common.Footer app_services={{ app_services }} />
+
     </div>
+
+</div>
   
-  </div>
-  
-{% endblock %}
+
 
 
 

@@ -1,0 +1,39 @@
+{#def app_services, request #}
+
+<AppShell page_title="Index">
+    <Layout.Stacked app_services={{app_services}}>
+
+        <div id="login-polarion" class="flex flex-col items-center justify-center px-6 pt-8 mx-auto pt:mt-0 dark:bg-gray-900">
+
+            <div class="flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white">
+                <Flowbite.Icons.FlowbiteLogo width_css_class="w-11" height_css_class="h-11" classes="text-primary-500 mr-4" />
+                <span>{{ app_services.app_state.app_title }}</span>
+            </div>
+
+            <!-- Card -->
+            <div class="w-full max-w-3xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                
+                <form id="polarion-login-form" class="mt-8 space-y-6" hx-post="/" hx-target="#login-polarion" hx-swap="outerHTML" hx-indicator="#indicator" hx-disabled-elt="#login-btn" >
+                    <div>
+                        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                        {% set username_val = request.form['username'] if 'username' in request.form else "" %}
+                        <input type="text" name="username" id="username" value="{{ username_val }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                    <div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                    <div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                    
+                    <div class="flex items-center justify-between">
+                        <Flowbite.Button text="Connecting..." button_style="spinner" id="indicator" classes="htmx-indicator" />
+                        <Flowbite.Button id="login-btn" text="Login" type="submit" button_style="primary" />
+                    </div>
+                    
+                </form>
+
+            
+            </div>
+        </div>
+    </Layout.Stacked>
+</AppShell>
+

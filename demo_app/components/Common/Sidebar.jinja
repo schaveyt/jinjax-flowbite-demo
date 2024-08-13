@@ -1,6 +1,3 @@
-{% import 'flowbite_jinja_htmx/controls/forms/button.jinja' as Button %}
-
-{% macro render() %}
 
 <aside
   class="h-full fixed lg:relative overflow-auto w-96 z-40 transition-transform -translate-x-full bg-white border-r border-gray-300 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
@@ -8,12 +5,8 @@
 
   <div class="py-5 px-3">
 
-    {{ caller() }}
+    {{ content }}
 
   </div>
 
 </aside>
-
-
-
-{% endmacro %}

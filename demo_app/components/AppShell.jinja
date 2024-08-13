@@ -1,3 +1,5 @@
+{#def page_title #}
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,17 +30,13 @@
     </script>
 
     
-        
-    {% block head_outlet %}{% endblock %}
-    
 </head>
 
 <body class="text-black dark:text-gray-100 h-screen overflow-hidden">
 
-    {% block layout_content %}{% endblock %}
+    {{ content }}
 
 
-    
     <script type="application/javascript" src="{{url_for('static',filename='js/flowbite.min.2.4.1.js')}}"></script>
     <script type="application/javascript" src="{{url_for('static',filename='js/app.js')}}"></script>
     <script type="application/javascript">      

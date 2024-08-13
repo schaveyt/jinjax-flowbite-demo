@@ -1,0 +1,24 @@
+{#def app_services #}
+
+{% set page_title = "Counter" %}
+
+<AppShell page_title={{page_title}} >
+
+    <Layout.Main app_services={{app_services}}>
+
+        <div class="flex justify-between">
+            <h1 class="pb-4 text-3xl">
+                {{ page_title }}
+            </h1>
+            <div>
+                <Flowbite.Button id="back-btn" text="Back" button_style="primary" onclick="history.back()" />
+            </div>
+        </div>
+
+        <div class="px-4 flex flex-col space-y-6">
+            
+        </div>
+
+    </Layout.Main>
+
+</AppShell>

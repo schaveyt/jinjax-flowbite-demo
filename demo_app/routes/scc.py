@@ -1,8 +1,6 @@
-import os
-import time
-from flask import Response, redirect, render_template, request, url_for, flash
-from demo_app.templates.htmx_utils import htmx_redirect
-from demo_app.webapp import app_services, app
+from flask import Response, render_template, request, flash
+from demo_app.routes.htmx_utils import htmx_redirect
+from demo_app.webapp import app_services, app, jinjax_catalog
 
 
 
@@ -14,15 +12,13 @@ def scc_page() -> Response | str:
         app_services.scc_service.fetch()
         return htmx_redirect(request, "/scc")
 
-    return render_template("pages/scc/page.html",
-            app_services=app_services,
-            page_title="Source Control")
+    return jinjax_catalog.render("Pages.SourceControlPage", app_services=app_services)
 
 
 
 @app.route("/scc/changes")
 def scc_page_changes_htmx() -> Response | str:
-    return render_template("pages/scc/_scc_changes.html", app_services=app_services)
+    return jinjax_catalog.render("SourceControl.Changes", app_services=app_services)
 
 
 

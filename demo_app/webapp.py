@@ -1,7 +1,7 @@
 import os
 import traceback
 from flask import flash, render_template
-from demo_app import app
+from demo_app import app, jinjax_catalog
 from demo_app.services.app_services import ApplicationServices
 
 
@@ -32,12 +32,12 @@ else:
 
 # import the page handlers
 #
-import demo_app.templates.pages.index.page
-import demo_app.templates.pages.admin.page
-import demo_app.templates.pages.scc.page
-import demo_app.templates.pages.home.page
-import demo_app.templates.pages.counter.page
-import demo_app.templates.pages.fetch.page
+import demo_app.routes.index
+import demo_app.routes.admin
+import demo_app.routes.scc
+import demo_app.routes.home
+import demo_app.routes.counter
+import demo_app.routes.fetch
 
 
 

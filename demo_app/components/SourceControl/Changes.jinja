@@ -1,8 +1,4 @@
-{% import "pages/scc/scc_changes_card.jinja" as SccChangesCard %}
-{% import "flowbite_jinja_htmx/controls/forms/button.jinja" as Button %}
-{% import "flowbite_jinja_htmx/icons/arrow_up.jinja" as ArrowUpIcon %}
-{% import "flowbite_jinja_htmx/icons/arrow_down.jinja" as ArrowDownIcon %}
-{% import "flowbite_jinja_htmx/icons/refresh.jinja" as RefreshIcon %}
+{#def app_services #}
 
 <div class="flex-row items-center space-x-3">
 
@@ -12,18 +8,19 @@
     {% if remote_status_tuple.commits_behind|int > 0 or remote_status_tuple.commits_ahead|int > 0 %}
 
         <div class="mt-2 flex items-center space-x-3">
-            {% call Button.render(padding="", spacing="", style="primary", additional_attribs="hx-get='/scc/sync' hx-indicator='#indicator-sync'", tooltip="Pull & merge commits from the remote server and push local changes to the remote server") %}
+            <Flowbite.Button padding="" spacing="" button_style="primary" hx-get='/scc/sync' hx-indicator='#indicator-sync'
+                tooltip="Pull & merge commits from the remote server and push local changes to the remote server" >
                 <div class="text-base py-2 px-4 max-w-min rounded-lg flex items-center bg-primary-700 hover:bg-primary-600 text-white whitespace-nowrap">
-                    {{ RefreshIcon.render() }}
+                    <Flowbite.Icons.Refresh />
                     <p class="pl-1 pr-3">Sync Changes</p>
                     <p>{{ remote_status_tuple.commits_behind }}</p>
-                    {{ ArrowDownIcon.render(class="-ml-1") }}
+                    <Flowbite.Icons.ArrowDown classes="-ml-1" />
                     <p>{{ remote_status_tuple.commits_ahead }}</p>
-                    {{ ArrowUpIcon.render(class="-ml-1") }}
+                    <Flowbite.Icons.ArrowUp classes="-ml-1" />
                     
                 </div>
-            {% endcall %}
-            {{ Button.render(id="indicator-sync", style="spinner", text="Synching...", class="htmx-indicator") }}
+            </Flowbite.Button>
+            <Flowbite.Button id="indicator-sync" button_style="spinner" text="Synching..." classes="htmx-indicator" />
         </div>
 
     {% endif %}
@@ -41,12 +38,13 @@
             
             <input type="text" id="commit_msg" name="commit_msg" value="{{app_services.app_state.pending_commit_msg}}" placeholder="Commit message. Brief text (limited to 75 chars)" maxlength="75"
                 class="w-full bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
-            {{ Button.render(id="commit-btn", text="Commit", type="submit", style="primary", class="whitespace-nowrap" ) }}
+            <Flowbite.Button id="commit-btn" text="Commit" type="submit" style="primary" classes="whitespace-nowrap" />
+            
         </form>
     </div>
 {% endif %}
 
-{{ SccChangesCard.render(mode="staged", title="Staged Changes", diff_list=diff_list, subtitle="Changes marked to be committed to the local repository.") }}
+<SourceControl.ChangesCard mode="staged" title="Staged Changes" diff_list={{diff_list}} subtitle="Changes marked to be committed to the local repository."/>
 
 {% set diff_list = app_services.scc_service.get_unstaged_items() %}
-{{ SccChangesCard.render(mode="unstaged", title="Unstaged Changes", diff_list=diff_list, subtitle="Changes that can be marked for staging.") }}
+<SourceControl.ChangesCard mode="unstaged" title="Unstaged Changes" diff_list={{diff_list}} subtitle="Changes that can be marked for staging." />

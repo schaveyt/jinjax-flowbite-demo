@@ -1,0 +1,59 @@
+{#def app_services #}
+
+<AppShell page_title="Index">
+    <Layout.Stacked app_services={{app_services}}>
+
+        <div class="mx-auto flex flex-col items-center">
+
+            <div class="lg:w-3/4">
+
+                <div class="flex items-start justify-between">
+                    <h1 class="pb-4 text-3xl">
+                        Source Control
+                    </h1>
+                    <div class="flex items-start space-x-3">
+                        <Flowbite.Button id="indicator-fetch" text="Loading..." button_style="spinner" classes="htmx-indicator" />
+                        <Flowbite.Button id="refresh-json-bt" text="Refresh" button_style="primary" tooltip="Refresh local and remote git data." 
+                            hx-get="/scc/fetch" hx-indicator="#indicator-fetch" />
+                        <Flowbite.Button id="back-btn" text="Back" button_style="primary" onclick="history.back()" />
+                    </div>
+                </div>
+
+                <div class="flex flex-col space-y-8">
+
+                    <div class="flex flex-col space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <p class="font-medium text-lg">Git Repository Path:</p>
+                            <p class="font-light">{{ app_services.scc_service.repo_path }}</p>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <p class="font-medium text-lg">Active Branch:</p>
+                            <p class="font-light">{{ app_services.scc_service.active_branch_name }}</p>
+                        </div>
+
+                    </div>
+
+                    {% if app_services.scc_service.is_valid %}
+
+                        <div hx-get="/scc/changes" hx-swap="outerHTML" hx-indicator='#indicator-changes' hx-trigger="load">
+                            <div id="indicator-changes" class="htmx-indicator">
+                                <div class="flex flex-col space-y-3 pb-10">
+                                    
+                                    <Flowbite.Button style="spinner" text="Loading..." />
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </Layout.Stacked>
+</AppShell>
+

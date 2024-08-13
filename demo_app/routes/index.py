@@ -3,8 +3,8 @@ import time
 from flask import Response, redirect, render_template, request, url_for, flash
 import webview
 from demo_app.domain.result import Result
-from demo_app.templates.htmx_utils import htmx_redirect
-from demo_app.webapp import app_services, app
+from demo_app.routes.htmx_utils import htmx_redirect
+from demo_app.webapp import app_services, app, jinjax_catalog
 
 @app.route("/", methods=('GET', 'POST'))
 def index_page() -> Response | str:
@@ -37,7 +37,7 @@ def index_page() -> Response | str:
     if 'HX_REQUEST' in request.headers:
         return htmx_redirect(request, "/")
     
-    return render_template("pages/index/page.html", app_services=app_services, page_title=page_title)
+    return jinjax_catalog.render("Pages.IndexPage", app_services=app_services, page_title=page_title, request=request)
 
 
 def login_and_redirect(username: str, password: str) -> Response | str:

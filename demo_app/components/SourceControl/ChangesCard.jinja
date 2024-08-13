@@ -1,0 +1,90 @@
+{#def mode="", title="Title", subtitle="subtitle", diff_list=None, classes="" #}
+
+
+<Flowbite.Card title=title subtitle=subtitle show_header_subtitle=True enable_header_bg=True)>
+
+       
+    <ul class="overflow-auto">
+
+        {% if diff_list is not none and diff_list|length == 0 %}
+            
+            <span>None</span>
+
+        {% else %}
+
+            {% for diff in diff_list %}
+
+                <li class="mt-1 p-1 text-sm flex flex-col rounded md:flex-row md:items-center md:justify-between hover:bg-gray-100 dark:hover:bg-gray-600">
+
+
+                    <!-- left grouping -->
+                    <div class="flex flex-col md:flex-row md:items-center md:space-x-3">
+                        <Flowbite.Icons.FileSolid />
+                        <span class="text-gray-800 dark:text-gray-200 font-semibold">{{ diff.filename }}</span>
+                        <span class="font-light">{{ diff.dirname }}</span>
+                    </div>
+
+                    <!-- right grouping -->
+                    <div class="flex items-center space-x-2">
+
+                        {% set hx_vals_json = '"filepath": "{}"'.format(diff.filepath)  %}
+                        {% set action_button_indicator_id = "indicator-{}-{}".format(mode, loop.index) %}
+                        {% set action_button_indicator_id_ref = "#{}".format(action_button_indicator_id) %}
+
+                        {# <Flowbite.Spinner id={{action_button_indicator_id}} text="" classes="htmx-indicator" /> #}
+
+                        {% if mode == "staged" %}
+
+                            <Flowbite.Button button_style="primary" padding="p-1" spacing="" tooltip="Unstage file (i.e. do not commit this file change)"
+                                hx-get="/scc/unstage" hx-indicator={{action_button_indicator_id_ref}} hx-vals={{hx_vals_json}} >
+                                <Flowbite.Icons.Remove width_css_class="w-4" height_css_class="h-4" />
+                            </Flowbite.Button>
+
+                        {% endif %}
+
+
+                        {% if mode == "unstaged" %}
+
+                            {% if diff.change_type == "Untracked" %}
+                                {% set discard_confirm_text = "Are you sure you want to DELETE this file?\nThis is IRREVERSIBLE!\nThis file will be FOREVER LOST if you proceed." %}
+                            {% else %}
+                                {% set discard_confirm_text = "Are you sure you want to discard change to this file?" %}
+                            {% endif %}
+                            <Flowbite.Button button_style="primary" padding="p-1" spacing="" tooltip="Discard changed file (i.e. revert back to last committed version)" hx-get="/scc/discard" hx-indicator={{action_button_indicator_id_ref}} hx-vals={{hx_vals_json}} hx-confirm={{discard_confirm_text}} >
+                                <Flowbite.Icons.Undo width_css_class="w-4" height_css_class="h-4" />
+                            </Flowbite.Button> 
+
+                            <Flowbite.Button button_style="primary" padding="p-1" spacing="" tooltip="Stage changed file (i.e. mark to be committed)" hx-get="/scc/stage" hx-indicator={{action_button_indicator_id_ref}} hx-vals={{hx_vals_json}} >
+                                <Flowbite.Icons.Plus width_css_class="w-4" height_css_class="h-4" />
+                            </Flowbite.Button>
+
+                        {% endif %}
+
+
+                        {% set color_classes = ""  %}
+                        {% if diff.change_type == "Added" or diff.change_type == "Untracked" %}
+                            {% set color_classes = "text-green-600 bg-green-300"  %}
+                        {% elif diff.change_type == "Modified" %}
+                            {% set color_classes = "text-amber-700 bg-amber-300"  %}
+                        {% elif diff.change_type == "Deleted" %}
+                            {% set color_classes = "text-rose-700 bg-rose-300"  %}
+                        {% elif diff.change_type == "Renamed" %}
+                            {% set color_classes = "text-primary-600 bg-primary-300"  %}
+                        {% endif %}
+
+                        <span class="w-20 text-xs text-center font-semibold rounded p-1 {{ color_classes }}">{{ diff.change_type }}</span>
+
+                    </div>
+
+                </li>
+
+            {% endfor %}
+
+        {% endif %}
+
+    </ul>
+
+
+</Flowbite.Card>
+
+
