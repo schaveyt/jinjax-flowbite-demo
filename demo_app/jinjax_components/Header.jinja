@@ -36,7 +36,7 @@
 
             <!-- Application Title -->
             <a class="flex items-center ml-2 sm:ml-0" data-enhance-nav="false">
-                {{ catalog.irender("Flowbite.Icons.FlowbiteLogo", width_css_class="w-8", height_css_class="h-8", classes="text-primary-500 mr-3") }}
+                <Flowbite.Icons.FlowbiteLogo width_css_class="w-8" height_css_class="h-8" classes="text-primary-500 mr-3" />
                 <a href="/home" class="self-center text-2xl font-semibold whitespace-nowrap text-white">{{ app_services.app_state.app_title }}</a>
             </a>
             
@@ -47,18 +47,22 @@
         <div class="flex items-center space-x-2 lg:order-2">
 
             <!-- Dark Mode Toggle -->
-            {{ catalog.irender("Flowbite.DarkModeToggle", classes="mr-1") }}
+            <Flowbite.DarkModeToggle classes="mr-1" />
             
 
             <a href="/admin" class="p-1 mr-1 rounded-lg  text-gray-400 hover:text-white hover:bg-gray-700 focus:ring-4 focus:ring-gray-600">
-                {{ catalog.irender("Flowbite.Icons.Gear") }}
+                <Flowbite.Icons.Gear/>
             </a>
 
 
             {% if app_services.auth_service.current_user_name is not none %}
 
                 <div>
-                    {{ catalog.irender("Flowbite.Button", text=app_services.auth_service.current_user_name, classes="bg-gray-100 text-gray-800", additional_attribs="data-dropdown-toggle='user-profile-dropdown' ") }}
+                    <Flowbite.Button
+                        text={{app_services.auth_service.current_user_name}}
+                        classes="bg-gray-100 text-gray-800"
+                        additional_attribs="data-dropdown-toggle='user-profile-dropdown' "
+                    />
                 </div>
                 <!-- User Profile Drawer -->
                 <div id="user-profile-dropdown" 

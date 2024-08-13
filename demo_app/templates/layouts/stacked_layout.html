@@ -7,7 +7,7 @@
 
   <div class="antialiased bg-gray-50 dark:bg-gray-900 h-screen flex flex-col ">
 
-    {{ catalog.irender("Header", app_services=app_services) }}
+    {{ catalog.irender("Header", include_responsive_drawer=False, app_services=app_services) }}
   
     <div class="h-screen flex flex-col justify-between flex-auto overflow-y-auto">
   
