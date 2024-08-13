@@ -42,6 +42,8 @@
     },
     "peacock.color": "#9183c1",
     "files.exclude": {
-        "**/__pycache__": true
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/*.egg-info": true
     }
 }
