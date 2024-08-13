@@ -1,4 +1,3 @@
-{% import "flowbite_jinja_htmx/controls/forms/button.jinja" as Button %}
 {% extends "layouts/main_layout.html" %}
 
 {% block side_bar_panel_content %}
@@ -12,7 +11,7 @@
         Home
     </h1>
     <div>
-        {{ Button.render(id="back-btn", text="Back", style="primary", additional_attribs="onclick='history.back()'") }}
+        {{ catalog.irender("Flowbite.Button", id="back-btn", text="Back", button_style="primary", __attrs={"onclick":"history.back()"} ) }}
     </div>
 </div>
 
