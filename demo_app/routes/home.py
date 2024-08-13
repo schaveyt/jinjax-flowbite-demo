@@ -18,5 +18,5 @@ def home_page() -> Response | str:
     
     page_title = "Home"
     
-    return jinjax_catalog.render("Pages.HomePage", app_services=app_services, page_title=page_title)
+    return jinjax_catalog.render("Pages.HomePage", app_services=app_services, page_title=page_title, request=request)
 

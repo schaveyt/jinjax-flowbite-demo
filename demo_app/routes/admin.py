@@ -10,7 +10,7 @@ def admin_page() -> Response | str:
         app_services.scc_service.fetch()
         return htmx_redirect(request, "/admin")
     
-    return jinjax_catalog.render("Pages.AdminPage", app_services=app_services)
+    return jinjax_catalog.render("Pages.AdminPage", app_services=app_services, request=request)
 
 
 

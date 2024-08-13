@@ -6,3 +6,10 @@ pyinstaller==6.0.0
 GitPython==3.1.43
 -e ../jinjax-flowbite = jinjax-flowbite
 # jinjax-flowbite==0.1.dev0
+# --find-links ../jinjax-flowbite/dist
+
+Flask==3.0.3
+pywebview==4.3.3
+pyinstaller==6.0.0
+GitPython==3.1.43
+jinjax-flowbite>=0.1.dev0

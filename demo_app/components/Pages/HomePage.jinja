@@ -16,7 +16,308 @@
         </div>
 
         <div class="px-4 flex flex-col space-y-6">
+
+            <div class="flex flex-wrap">
+
+                <Flowbite.Card title="Colors" enable_header_bg="true" classes="mr-6 mt-6" >
+
+                    <div class="flex space-x-4">
+
+                        <div class="flex flex-col space-y-1 justify-stretch">
+                            <div class="p-3 bg-gray-50">bg-gray-50</div>
+                            <div class="p-3 bg-gray-100">bg-gray-100</div>
+                            <div class="p-3 bg-gray-200">bg-gray-200</div>
+                            <div class="p-3 bg-gray-300">bg-gray-300</div>
+                            <div class="p-3 bg-gray-400">bg-gray-400</div>
+                            <div class="p-3 bg-gray-500">bg-gray-500</div>
+                            <div class="p-3 bg-gray-600">bg-gray-600</div>
+                            <div class="p-3 bg-gray-700">bg-gray-700</div>
+                            <div class="p-3 bg-gray-800 text-gray-100">bg-gray-800</div>
+                            <div class="p-3 bg-gray-900 text-gray-100">bg-gray-900</div>
+                        </div>
+
+                        <div class="flex flex-col space-y-1 justify-stretch">
+                            <div class="p-3 bg-primary-50">bg-primary-50</div>
+                            <div class="p-3 bg-primary-100">bg-primary-100</div>
+                            <div class="p-3 bg-primary-200">bg-primary-200</div>
+                            <div class="p-3 bg-primary-300">bg-primary-300</div>
+                            <div class="p-3 bg-primary-400">bg-primary-400</div>
+                            <div class="p-3 bg-primary-500">bg-primary-500</div>
+                            <div class="p-3 bg-primary-600">bg-primary-600</div>
+                            <div class="p-3 bg-primary-700">bg-primary-700</div>
+                            <div class="p-3 bg-primary-800 text-primary-100">bg-primary-800</div>
+                            <div class="p-3 bg-primary-900 text-primary-100">bg-primary-900</div>
+                        </div>
+
+                        <div class="flex flex-col space-y-1 justify-stretch">
+                            <div class="p-3 bg-red-50">bg-red-50</div>
+                            <div class="p-3 bg-red-100">bg-red-100</div>
+                            <div class="p-3 bg-red-200">bg-red-200</div>
+                            <div class="p-3 bg-red-300">bg-red-300</div>
+                            <div class="p-3 bg-red-400">bg-red-400</div>
+                            <div class="p-3 bg-red-500">bg-red-500</div>
+                            <div class="p-3 bg-red-600">bg-red-600</div>
+                            <div class="p-3 bg-red-700">bg-red-700</div>
+                            <div class="p-3 bg-red-800 text-red-100">bg-red-800</div>
+                            <div class="p-3 bg-red-900 text-red-100">bg-red-900</div>
+                        </div>
+
+                    </div>
+
+                </Flowbite.Card>
             
+
+                <Flowbite.Card title="Buttons" enable_header_bg="true" classes="mr-6 mt-6" >
+
+                    <div class="flex flex-col space-y-4">
+                        <div>
+                            <Flowbite.Button button_style="defualt" text="Default" />
+                        </div>
+                        <div>
+                            <Flowbite.Button button_style="primary" text="Primary" />
+                        </div>
+                        <div>
+                            <Flowbite.Button button_style="primary" text="Primary (disabled)" disabled="true" />
+                        </div>
+                        <div>
+                            <Flowbite.Button button_style="primary">
+                                <div class="flex items-center space-x-3">
+                                    <Flowbite.Icons.Plus/>
+                                    <p>Primary with Content</p>
+                                </div>
+                            </Flowbite.Button>
+                        </div>
+                        <div>
+                            <Flowbite.Button button_style="primary" tooltip="A tooltip">
+                                <div class="flex items-center space-x-3">
+                                    <Flowbite.Icons.Plus/>
+                                    <p>Primary with Content & Tooltip</p>
+                                </div>
+                            </Flowbite.Button>
+                        </div>
+                        <div>
+                            <Flowbite.Button button_style="spinner" />
+                        </div>
+                        
+                    </div>
+
+                </Flowbite.Card>
+
+                <Flowbite.Card title="Alerts" enable_header_bg="true" classes="mr-6 mt-6" >
+
+                    <div class="flex flex-col space-y-4">
+                        <Flowbite.Alert type="success" text="This is a success alert" />
+                        <Flowbite.Alert type="warning" text="This is a warning alert" />
+                        <Flowbite.Alert type="danger" text="This is a failure alert" />
+                    </div>
+
+                </Flowbite.Card>
+
+                <Flowbite.Card title="Spinners" enable_header_bg="true" classes="mr-6 mt-6" >
+
+                    <div class="flex flex-col space-y-4">
+                        <Flowbite.Spinner text=""/>
+                        <Flowbite.Spinner text="With text." />
+                    </div>
+
+                </Flowbite.Card>
+
+                <Flowbite.Card title="Form Inputs" enable_header_bg="true" classes="mr-6 mt-6" >
+
+                    <form post="#" class="h-[88%] flex flex-col justify-between">
+                        <div class="flex flex-col space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <Flowbite.Checkbox  />
+                                <Flowbite.InputLabel text="Checkbox (unchecked)" />
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <Flowbite.Checkbox checked />
+                                <Flowbite.InputLabel text="Checkbox (checked)" />
+                            </div>
+                            <div>
+                                <Flowbite.InputLabel text="Input Text" classes="mb-2"/>
+                                <Flowbite.InputText value="Example value" />
+                            </div>
+                            <div>
+                                <Flowbite.InputLabel text="Input Text with paceholder"  classes="mb-2"/>
+                                <Flowbite.InputText placeholder="Placeholder text"/>
+                            </div>
+                            <div>
+                                <Flowbite.InputLabel text="Input Text with required"  classes="mb-2"/>
+                                <Flowbite.InputText required/>
+                            </div>
+                            <div>
+                                <Flowbite.InputLabel text="Select"  classes="mb-2"/>
+                                <Flowbite.Select id="123" name="select_value">
+                                    <option selected >Choose an option</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                    <option value="4">Option 4</option>
+                                </Flowbite.Select>    
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-end">
+                            <Flowbite.Button button_style="primary" type="submit" text="Submit" />
+                        </div>
+                    </form>
+
+                </Flowbite.Card>
+
+
+                <Flowbite.Card title="Icons" enable_header_bg="true" classes="mr-6 mt-6" >
+
+                    <div class="flex flex-wrap">
+
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.AngleDown class="mr-3 mt-3" />
+                            <span class="text-sm">AngleDown</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.ArrowDown class="mr-3 mt-3" />
+                            <span class="text-sm">ArrowDown</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.ArrowUp class="mr-3 mt-3" />
+                            <span class="text-sm">ArrowUp</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Chart class="mr-3 mt-3" />
+                            <span class="text-sm">Chart</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.CircleClose class="mr-3 mt-3" />
+                            <span class="text-sm">CircleClose</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.CirclePlus class="mr-3 mt-3" />
+                            <span class="text-sm">CirclePlus</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Clipboard class="mr-3 mt-3" />
+                            <span class="text-sm">Clipboard</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.ClockOutline class="mr-3 mt-3" />
+                            <span class="text-sm">ClockOutline</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.DocumentSolid class="mr-3 mt-3" />
+                            <span class="text-sm">DocumentSolid</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Download class="mr-3 mt-3" />
+                            <span class="text-sm">Download</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.FileSolid class="mr-3 mt-3" />
+                            <span class="text-sm">FileSolid</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.FlowbiteLogo class="mr-3 mt-3" />
+                            <span class="text-sm">FlowbiteLogo</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.FolderSolid class="mr-3 mt-3" />
+                            <span class="text-sm">FolderSolid</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Gear class="mr-3 mt-3" />
+                            <span class="text-sm">Gear</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.InfoCircle class="mr-3 mt-3" />
+                            <span class="text-sm">InfoCircle</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.NetworkBus class="mr-3 mt-3" />
+                            <span class="text-sm">NetworkBus</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.NetworkGraph class="mr-3 mt-3" />
+                            <span class="text-sm">NetworkGraph</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.PieChart class="mr-3 mt-3" />
+                            <span class="text-sm">PieChart</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Plus class="mr-3 mt-3" />
+                            <span class="text-sm">Plus</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Power class="mr-3 mt-3" />
+                            <span class="text-sm">Power</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.QuestionCircle class="mr-3 mt-3" />
+                            <span class="text-sm">QuestionCircle</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Refresh class="mr-3 mt-3" />
+                            <span class="text-sm">Refresh</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Remove class="mr-3 mt-3" />
+                            <span class="text-sm">Remove</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.SccBranch class="mr-3 mt-3" />
+                            <span class="text-sm">SccBranch</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Stack class="mr-3 mt-3" />
+                            <span class="text-sm">Stack</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Undo class="mr-3 mt-3" />
+                            <span class="text-sm">Undo</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.Upload class="mr-3 mt-3" />
+                            <span class="text-sm">Upload</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 p-4 justify-center">
+                            <Flowbite.Icons.WandMagicSolid class="mr-3 mt-3" />
+                            <span class="text-sm">WandMagicSolid</span>
+                        </div>
+                        
+
+                    </div>
+
+                </Flowbite.Card>
+
+
+
+            </div>
+
         </div>
 
     </Layout.Main>

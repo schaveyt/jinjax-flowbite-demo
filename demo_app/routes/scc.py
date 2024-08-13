@@ -12,13 +12,13 @@ def scc_page() -> Response | str:
         app_services.scc_service.fetch()
         return htmx_redirect(request, "/scc")
 
-    return jinjax_catalog.render("Pages.SourceControlPage", app_services=app_services)
+    return jinjax_catalog.render("Pages.SourceControlPage", app_services=app_services, request=request)
 
 
 
 @app.route("/scc/changes")
 def scc_page_changes_htmx() -> Response | str:
-    return jinjax_catalog.render("SourceControl.Changes", app_services=app_services)
+    return jinjax_catalog.render("SourceControl.Changes", app_services=app_services, request=request)
 
 
 

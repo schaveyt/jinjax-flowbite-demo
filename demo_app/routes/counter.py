@@ -15,5 +15,5 @@ def counter_page() -> Response | str:
         return htmx_redirect(request, "/counter")
 
     
-    return jinjax_catalog.render("Pages.CounterPage", app_services=app_services)
+    return jinjax_catalog.render("Pages.CounterPage", app_services=app_services, request=request)
 

@@ -15,5 +15,5 @@ def fetch_page() -> Response | str:
         app_services.scc_service.fetch()
         return htmx_redirect(request, "/fetch")
     
-    return jinjax_catalog.render("Pages.FetchPage", app_services=app_services)
+    return jinjax_catalog.render("Pages.FetchPage", app_services=app_services, request=request)
 
