@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from jinjax import Catalog
+
 import logging
 logging.basicConfig(level=logging.WARNING)
 logging.getLogger('jinjax').setLevel(logging.DEBUG)
@@ -27,9 +28,10 @@ catalog = Catalog(jinja_env=app.jinja_env)
 # add jinjax-flowbite components
 JINJAX_FLOWBITE_DEV_ENV = os.environ.get("JINJAX_FLOWBITE_DEV")
 if JINJAX_FLOWBITE_DEV_ENV is not None and JINJAX_FLOWBITE_DEV_ENV == "1":
-    catalog.add_folder("../jinjax-flowbite/src/jinjax-flowbite")
+    catalog.add_folder("../jinjax-flowbite/src/jinjax-flowbite/components", prefix="Flowbite")
 else:
-    catalog.add_module("jinjax-flowbite")
+    import jinjax_flowbite
+    catalog.add_module(jinjax_flowbite.components_path, prefix="Flowbite")
 
 # add local jinjax components
 catalog.add_folder("demo_app/jinjax_components")

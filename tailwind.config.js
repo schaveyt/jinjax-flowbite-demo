@@ -7,7 +7,7 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
     "./venv/Lib/site-packages/py_flowbite_jinja_htmx/**/*.{html,jinja}",
     "./venv/Lib/site-packages/jinjax_flowbite/**/*.{html,jinja}",
-    "../jinjax_flowbite/**/*.{html,jinja}",
+    "../jinjax_flowbite/src/jinjax_flowbite/**/*.{html,jinja}",
   ],
   darkMode: 'class',
   theme: {

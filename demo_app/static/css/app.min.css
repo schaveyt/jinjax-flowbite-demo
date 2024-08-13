@@ -1226,10 +1226,6 @@ input:checked + .toggle-bg {
   margin-top: 0.5rem;
 }
 
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
 }
@@ -1446,10 +1442,6 @@ input:checked + .toggle-bg {
 
 .resize {
   resize: both;
-}
-
-.list-disc {
-  list-style-type: disc;
 }
 
 .list-none {
@@ -24529,10 +24521,6 @@ input:checked + .toggle-bg {
   padding-left: 0.25rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
-}
-
 .pr-3 {
   padding-right: 0.75rem;
 }
@@ -24764,10 +24752,6 @@ input:checked + .toggle-bg {
 .text-yellow-800 {
   --tw-text-opacity: 1;
   color: rgb(114 59 19 / var(--tw-text-opacity));
-}
-
-.underline {
-  text-decoration-line: underline;
 }
 
 .antialiased {
