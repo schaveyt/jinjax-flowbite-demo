@@ -1,5 +1,4 @@
 {% extends "layouts/app.html" %}
-{% import "components/layout/footer.jinja" as Footer with context %}
 {% import "flowbite_jinja_htmx/controls/alert.jinja" as Alert %}
 
 
@@ -51,7 +50,7 @@
   
         </section>
   
-        {{ Footer.render() }}
+        {{ catalog.irender("Footer", app_services=app_services) }}
   
     </div>
   

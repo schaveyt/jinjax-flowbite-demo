@@ -1,0 +1,75 @@
+
+{#def
+    app_services, 
+    classes="" 
+#}
+
+<footer class="flex flex-col md:flex-row items-center justify-between border-t border-gray-700 text-gray-300 space-x-4 w-full p-2 bg-gray-800 {{ classes }}" >
+    
+    <div class="flex flex-col lg:flex-row items-center space-x-4">
+        <!-- Source Control -->
+        {% set active_branch_name = app_services.scc_service.active_branch_name %}
+        {% set remote_status = app_services.scc_service.get_active_branch_remote_status() %}
+
+        <div class="flex items-center">
+
+        
+            <div class="group">
+                <Flowbite.Tooltip text="Git Source Control. Click for more actions..." />
+                <a href="/scc" >
+
+                    <Flowbite.Button button_style="primary" classes="flex items-center" padding="py-1 px-2 mr-1" spacing="">
+
+                        <Flowbite.Icons.SccBranch />
+                        
+                        {% if active_branch_name is not none %}
+
+                            <span>{{ active_branch_name }}</span>
+
+                            {% if remote_status.num_changes > 0 %}
+                                <p class="inline-flex items-center justify-center w-6 h-6 text-xs font-bold ml-1 p-1 rounded-full bg-amber-300 text-amber-700">
+                                    {{ remote_status.num_changes }}
+                                </p>    
+                            {% endif %}
+
+                            
+                            <div class="ml-3 flex items-center">
+                                <span>{{ remote_status.commits_behind }}</span>
+                                <Flowbite.Icons.ArrowDown classes="-ml-1" />
+                                <span>{{ remote_status.commits_ahead }}</span>
+                                <Flowbite.Icons.ArrowUp classes="-ml-1"/>
+                            </div>
+                            
+                        {% endif %}
+                            
+                    </Flowbite.Button>
+                    
+                </a>
+            </div>
+
+            <div class="group flex items-center space-x-1">
+                <Flowbite.Tooltip text="Refresh git source control data..." />
+
+                {% set current_url = url_for( request.endpoint, **request.view_args) %}
+                
+                <Flowbite.Button button_style="primary" padding="p-1" spacing="" hx-get="{{ current_url }}" hx-vals='\"scc_fetch\": true' hx-indicator="#scc_footer_refresh_indicator">
+                    <Flowbite.Icons.Refresh />
+                </Flowbite.Button>
+                <Flowbite.Spinner id="scc_footer_refresh_indicator" text="" classes="pl-1 htmx-indicator" />
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-1 whitespace-nowrap">
+            <span class="">Git Repo:</span>
+            <span class="font-thin">{{ app_services.scc_service.repo_path }}</span>
+        </div>
+    </div>
+    <div class="flex flex-col lg:flex-row items-center space-x-6 whitespace-nowrap">
+        <div id="app-version" class="mr-2 flex space-x-2 items-center">
+            <span >{{ app_services.app_state.app_title }}</span>
+            <span class="font-thin">{{ app_services.app_state.app_version }}</span>
+        </div>
+        
+    </div>
+
+</footer>
